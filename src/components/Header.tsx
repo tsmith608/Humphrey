@@ -30,7 +30,7 @@ export default function Header() {
                 left: 0,
                 right: 0,
                 zIndex: 50,
-                background: scrolled ? "rgba(10,10,15,0.92)" : "rgba(10,10,15,0.75)",
+                background: scrolled ? "rgba(244,244,244,0.92)" : "rgba(244,244,244,0.75)",
                 backdropFilter: "blur(24px)",
                 WebkitBackdropFilter: "blur(24px)",
                 borderBottom: "1px solid var(--border-subtle)",
@@ -55,8 +55,8 @@ export default function Header() {
                             />
                         ))}
                     </div>
-                    <span className="font-serif" style={{ fontSize: 22, fontStyle: "italic", color: "var(--text-primary)" }}>
-                        humphrey
+                    <span className="font-serif" style={{ fontSize: 22, fontStyle: "italic", color: "var(--accent-primary)" }}>
+                        EchoHeart
                     </span>
                 </a>
 

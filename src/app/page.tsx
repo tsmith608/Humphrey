@@ -239,14 +239,13 @@ export default function Home() {
         <div style={{ position: "relative", zIndex: 1, maxWidth: 860, width: "100%", margin: "0 auto" }}>
           <p className="section-label" style={{ marginBottom: 24 }}>Soundwave Portrait Studio</p>
 
-          <h1 className="font-serif" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", lineHeight: 1.05, marginBottom: 28, color: "var(--text-primary)" }}>
-            Turn your{" "}
-            <span className="gradient-text" style={{ fontStyle: "italic" }}>voice</span>
-            {" "}into art
+          <h1 className="font-serif" style={{ fontSize: "clamp(3rem, 8vw, 6rem)", lineHeight: 1.05, marginBottom: 28, color: "var(--accent-primary)" }}>
+            Echoes of{" "}
+            <span className="gradient-text" style={{ fontStyle: "italic" }}>the heart</span>
           </h1>
 
           <p style={{ fontSize: "clamp(15px, 2vw, 18px)", color: "var(--text-secondary)", lineHeight: 1.75, maxWidth: 560, margin: "0 auto 40px" }}>
-            Upload any audio — a voicemail, a song, a laugh, a vow — and we'll render it into a stunning soundwave portrait. The most personal gift imaginable.
+            Turn your most precious voice recordings and memories into stunning soundwave art. A family-centered gift that speaks louder than words.
           </p>
 
           <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: 16, marginBottom: 64 }}>
@@ -418,10 +417,10 @@ export default function Home() {
                     <span key={i} className="wave-bar" style={{ height: h * 18, animationDelay: `${i * 0.1}s`, background: i % 2 === 0 ? "var(--accent-primary)" : "var(--accent-secondary)" }} />
                   ))}
                 </div>
-                <span className="font-serif" style={{ fontSize: 22, fontStyle: "italic", color: "var(--text-primary)" }}>humphrey</span>
+                <span className="font-serif" style={{ fontSize: 22, fontStyle: "italic", color: "var(--accent-primary)" }}>EchoHeart</span>
               </div>
               <p style={{ fontSize: 14, color: "var(--text-secondary)", lineHeight: 1.7 }}>
-                Turning sound into art, one waveform at a time. The most personal gift you'll ever give.
+                Preserving the echoes of your heart, one waveform at a time. The most personal gift you'll ever give.
               </p>
             </div>
 

@@ -41,7 +41,7 @@ export default function CheckoutModal() {
     const triggerDownload = () => {
         const link = document.createElement("a");
         link.href = "/sample.pdf";
-        link.download = "humphrey-soundwave.pdf";
+        link.download = "EchoHeart-Portrait.pdf";
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -69,10 +69,10 @@ export default function CheckoutModal() {
                         {/* Mini waveform */}
                         <div className="flex items-end gap-[2px] h-5">
                             {[0.4, 0.8, 1, 0.6, 0.9, 0.5, 1, 0.7, 0.3].map((h, i) => (
-                                <span key={i} className="wave-bar" style={{ height: `${h * 16}px`, animationDelay: `${i * 0.1}s` }} />
+                                <span key={i} className="wave-bar" style={{ height: `${h * 16}px`, animationDelay: `${i * 0.1}s`, background: i % 2 === 0 ? "var(--accent-primary)" : "var(--accent-secondary)" }} />
                             ))}
                         </div>
-                        <span className="font-serif italic text-lg text-[var(--text-primary)]">humphrey</span>
+                        <span className="font-serif italic text-lg text-[var(--accent-primary)]">EchoHeart</span>
                     </div>
                     <button
                         onClick={closeCheckout}

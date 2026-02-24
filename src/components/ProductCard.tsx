@@ -37,7 +37,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             }}
             onMouseEnter={e => {
                 (e.currentTarget as HTMLElement).style.borderColor = "var(--accent-primary)";
-                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 40px rgba(124,108,248,0.1)";
+                (e.currentTarget as HTMLElement).style.boxShadow = "0 0 40px rgba(170, 58, 58, 0.1)";
             }}
             onMouseLeave={e => {
                 (e.currentTarget as HTMLElement).style.borderColor = "var(--border-subtle)";
@@ -49,9 +49,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                 <img
                     src={image}
                     alt={title}
-                    style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.7, transition: "transform 0.6s, opacity 0.3s" }}
-                    onMouseEnter={e => { (e.target as HTMLImageElement).style.transform = "scale(1.06)"; (e.target as HTMLImageElement).style.opacity = "0.9"; }}
-                    onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = "scale(1)"; (e.target as HTMLImageElement).style.opacity = "0.7"; }}
+                    style={{ width: "100%", height: "100%", objectFit: "cover", opacity: 0.8, transition: "transform 0.6s, opacity 0.3s" }}
+                    onMouseEnter={e => { (e.target as HTMLImageElement).style.transform = "scale(1.06)"; (e.target as HTMLImageElement).style.opacity = "1"; }}
+                    onMouseLeave={e => { (e.target as HTMLImageElement).style.transform = "scale(1)"; (e.target as HTMLImageElement).style.opacity = "0.8"; }}
                 />
 
                 {/* Waveform overlay */}
@@ -59,7 +59,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                     <svg viewBox="0 0 200 52" style={{ width: "80%" }}>
                         {WAVE_HEIGHTS.map((h, i) => (
                             <rect key={i} x={i * 5 + 1} y={(52 - h) / 2} width="3" height={h} rx="1.5"
-                                fill="#7c6cf8" fillOpacity={0.4 + (h / 52) * 0.55} />
+                                fill="var(--accent-primary)" fillOpacity={0.4 + (h / 52) * 0.55} />
                         ))}
                     </svg>
                 </div>

@@ -2,19 +2,19 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #0a0a0f;
-  --bg-secondary: #111118;
-  --bg-card: #16161f;
-  --bg-elevated: #1e1e2a;
-  --accent-primary: #7c6cf8;
-  --accent-secondary: #a78bfa;
-  --accent-glow: rgba(124, 108, 248, 0.15);
-  --accent-warm: #f59e6b;
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-medium: rgba(255, 255, 255, 0.12);
-  --text-primary: #f0f0f8;
-  --text-secondary: #9090a8;
-  --text-muted: #5a5a72;
+  --bg-primary: #f4f4f4;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-elevated: #fcfcfc;
+  --accent-primary: #aa3a3a;
+  --accent-secondary: #a4b787;
+  --accent-glow: rgba(170, 58, 58, 0.08);
+  --accent-warm: #d97706;
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-medium: rgba(0, 0, 0, 0.1);
+  --text-primary: #2d2d2d;
+  --text-secondary: #5c5c5c;
+  --text-muted: #8c8c8c;
   --font-serif: "Cormorant Garamond", serif;
   --font-sans: "Space Grotesk", "Inter", sans-serif;
   --font-mono: "Inter", monospace;
@@ -63,7 +63,7 @@ body {
 }
 
 .glass-nav {
-  background: rgba(10, 10, 15, 0.85);
+  background: rgba(244, 244, 244, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border-bottom: 1px solid var(--border-subtle);
@@ -93,14 +93,14 @@ body {
 
 /* ---- Gradient Text ---- */
 .gradient-text {
-  background: linear-gradient(135deg, #a78bfa 0%, #7c6cf8 40%, #f59e6b 100%);
+  background: linear-gradient(135deg, #aa3a3a 0%, #d97706 50%, #a4b787 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .gradient-text-mono {
-  background: linear-gradient(90deg, #7c6cf8 0%, #a78bfa 100%);
+  background: linear-gradient(90deg, #aa3a3a 0%, #a4b787 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -108,7 +108,7 @@ body {
 
 /* ---- Button Styles ---- */
 .btn-primary {
-  background: linear-gradient(135deg, #7c6cf8, #6355e8);
+  background: linear-gradient(135deg, #aa3a3a, #8e2e2e);
   color: white;
   border: none;
   padding: 14px 32px;
