@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Humphrey | Premium Digital Storefront",
-  description: "Experience digital excellence with Humphrey.",
+  title: "Humphrey | Soundwave Portrait Studio",
+  description: "Turn any voice, song, or sound into a stunning personalised soundwave portrait. Instant PDF download or premium print on demand.",
 };
 
 export default function RootLayout({

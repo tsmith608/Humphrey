@@ -1,23 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@theme {
-  --color-brand-primary: #4a3728;
-  --color-brand-secondary: #8c7e6d;
-  --color-brand-accent: #ece4d9;
-  --color-bg-light: #fcf9f5;
-}
-
 :root {
-  --background: #fcf9f5;
-  --foreground: #4a3728;
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #111118;
+  --bg-card: #16161f;
+  --bg-elevated: #1e1e2a;
+  --accent-primary: #7c6cf8;
+  --accent-secondary: #a78bfa;
+  --accent-glow: rgba(124, 108, 248, 0.15);
+  --accent-warm: #f59e6b;
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --text-primary: #f0f0f8;
+  --text-secondary: #9090a8;
+  --text-muted: #5a5a72;
   --font-serif: "Cormorant Garamond", serif;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Space Grotesk", "Inter", sans-serif;
+  --font-mono: "Inter", monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
   --font-serif: var(--font-serif);
   --font-sans: var(--font-sans);
 }
@@ -28,11 +33,16 @@
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--bg-primary);
+  color: var(--text-primary);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
@@ -40,38 +50,272 @@ body {
   font-family: var(--font-serif);
 }
 
-/* Elegant Shadows & Transitions */
-.soft-shadow {
-  box-shadow: 0 10px 40px -10px rgba(74, 55, 40, 0.08);
+/* ---- Glow & Glass Effects ---- */
+.glow-purple {
+  box-shadow: 0 0 40px -10px var(--accent-primary), 0 0 80px -20px rgba(124, 108, 248, 0.1);
 }
 
-.watercolor-bg {
+.glass-card {
+  background: rgba(22, 22, 31, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+}
+
+.glass-nav {
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ---- Soundwave Bars Animation ---- */
+@keyframes wave-bar {
+
+  0%,
+  100% {
+    transform: scaleY(0.3);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.wave-bar {
+  display: inline-block;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--accent-primary);
+  transform-origin: bottom;
+  animation: wave-bar 1.2s ease-in-out infinite;
+}
+
+/* ---- Gradient Text ---- */
+.gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #7c6cf8 40%, #f59e6b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-mono {
+  background: linear-gradient(90deg, #7c6cf8 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ---- Button Styles ---- */
+.btn-primary {
+  background: linear-gradient(135deg, #7c6cf8, #6355e8);
+  color: white;
+  border: none;
+  padding: 14px 32px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
   position: absolute;
-  filter: blur(100px);
-  z-index: -1;
-  opacity: 0.15;
-  pointer-events: none;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.25s;
 }
 
-.floral-fade {
-  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+.btn-primary:hover::after {
+  opacity: 1;
 }
 
-/* Custom Scrollbar */
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(124, 108, 248, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  padding: 13px 32px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-secondary);
+  background: var(--accent-glow);
+}
+
+/* ---- Misc ---- */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--background);
+  background: var(--bg-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ece4d9;
+  background: var(--bg-elevated);
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #8c7e6d;
+  background: var(--accent-primary);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+}
+
+/* ---- Waveform SVG visual (decorative) ---- */
+.waveform-line {
+  stroke: var(--accent-primary);
+  stroke-width: 2;
+  fill: none;
+  opacity: 0.7;
+}
+
+/* ---- Upload zone ---- */
+.upload-zone {
+  border: 2px dashed var(--border-medium);
+  border-radius: 12px;
+  background: var(--accent-glow);
+  transition: all 0.3s ease;
+}
+
+.upload-zone:hover {
+  border-color: var(--accent-primary);
+  background: rgba(124, 108, 248, 0.1);
+}
+
+/* ---- Form inputs ---- */
+.form-input {
+  width: 100%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ─── Hamburger / Expandable Nav ─────────────────────────────── */
+.expandable-nav {
+  position: relative;
+  background: var(--background, #fcf9f5);
+  color: var(--foreground, #4a3728);
+  -webkit-clip-path: circle(22px at 26px 22px);
+  clip-path: circle(22px at 26px 22px);
+  -webkit-transition: clip-path 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: clip-path 0.375s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px -4px rgba(74, 55, 40, 0.12);
+}
+
+.expandable-nav:hover {
+  -webkit-clip-path: circle(360px at 26px 22px);
+  clip-path: circle(360px at 26px 22px);
+  -webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transition-duration: 0.6s;
+  transition-duration: 0.6s;
+}
+
+.navicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 16px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.navicon-bar {
+  position: relative;
+  width: 18px;
+  height: 2px;
+  background: #4a3728;
+  border-radius: 2px;
+}
+
+.navicon-bar::before,
+.navicon-bar::after {
+  display: block;
+  content: "";
+  width: 18px;
+  height: 2px;
+  background: #4a3728;
+  border-radius: 2px;
+  position: absolute;
+}
+
+.navicon-bar::before {
+  top: -6px;
+}
+
+.navicon-bar::after {
+  top: 6px;
+}
+
+.expandable-nav-links a {
+  display: block;
+  line-height: 48px;
+  padding: 0 20px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #4a3728;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.expandable-nav-links a:hover {
+  background: #f5ede4;
+}
+
+.expandable-nav-links a:active {
+  background: #ece4d9;
 }
