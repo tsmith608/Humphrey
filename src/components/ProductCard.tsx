@@ -1,51 +1,48 @@
-import React from 'react';
-import { Button } from './Button';
+import React from "react";
+import { ArrowUpRight } from "lucide-react";
 
-export interface ProductCardProps {
+interface ProductCardProps {
+    id: string;
     title: string;
-    price: number;
-    imageUrl: string;
-    category?: string;
-    className?: string;
+    price: string;
+    category: string;
+    image: string;
+    onBuy: (id: string, title: string, price: string) => void;
 }
 
-export const ProductCard = ({ title, price, imageUrl, category, className = '' }: ProductCardProps) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ id, title, price, category, image, onBuy }) => {
     return (
-        <div className={`group relative rounded-2xl bg-white/5 border border-white/10 overflow-hidden backdrop-blur-lg transition-all duration-300 hover:bg-white/10 hover:border-white/20 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(255,255,255,0.05)] ${className}`}>
-            {/* Image Container */}
-            <div className="aspect-[4/5] overflow-hidden bg-white/5 relative">
+        <div className="group relative flex flex-col overflow-hidden rounded-3xl glass transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:border-white/20">
+            <div className="aspect-[4/3] overflow-hidden">
                 <img
-                    src={imageUrl}
+                    src={image}
                     alt={title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {/* Subtle gradient overlay for text readability if needed later */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
 
-            {/* Content */}
-            <div className="p-5 flex flex-col gap-3">
-                {category && (
-                    <span className="text-[10px] font-bold tracking-widest text-gray-400 uppercase">
-                        {category}
-                    </span>
-                )}
-
-                <div className="flex justify-between items-start gap-4">
-                    <h3 className="font-semibold text-lg text-white leading-tight line-clamp-2">
-                        {title}
-                    </h3>
-                    <span className="font-bold text-white whitespace-nowrap">
-                        ${price.toFixed(2)}
-                    </span>
+            <div className="flex flex-1 flex-col p-6">
+                <div className="flex justify-between items-start mb-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500">{category}</span>
+                    <span className="text-sm font-bold text-white tracking-tight">{price}</span>
                 </div>
 
-                {/* CTA - Appears on hover for desktop, always visible on mobile */}
-                <div className="mt-2 md:opacity-0 md:translate-y-4 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300">
-                    <Button variant="glass" className="w-full font-semibold">
+                <h3 className="mb-6 text-xl font-medium text-white line-clamp-2 leading-tight">
+                    {title}
+                </h3>
+
+                <div className="mt-auto pt-4 border-t border-white/5 flex gap-3">
+                    <button
+                        onClick={() => onBuy(id, title, price)}
+                        className="flex-1 rounded-2xl gradient-bg py-3 text-sm font-bold text-white transition-all hover:opacity-90 active:scale-[0.98] flex items-center justify-center gap-2"
+                    >
                         Buy Now
-                    </Button>
+                        <ArrowUpRight className="h-4 w-4" />
+                    </button>
+                    <button className="w-12 h-12 rounded-2xl glass flex items-center justify-center text-zinc-400 hover:text-white transition-colors">
+                        <span className="sr-only">Details</span>
+                        <div className="h-1.5 w-1.5 rounded-full bg-current" />
+                    </button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-primary: #8b5cf6;
+  --color-brand-secondary: #ec4899;
+  --color-bg-dark: #050505;
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+}
+
 :root {
-  --background: #09090b; /* Very dark zinc */
-  --foreground: #fafafa;
+  --background: #050505;
+  --foreground: #ffffff;
+  --brand-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
 }
 
 @theme inline {
@@ -12,34 +21,47 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #09090b;
-    --foreground: #fafafa;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  @apply antialiased;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-@utility glass {
-  background-color: rgba(255, 255, 255, 0.03);
+/* Base Glassmorphism Utilities */
+.glass {
+  background: var(--color-glass-bg);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-glass-border);
 }
 
-@utility glass-panel {
-  background-color: rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+.glass-hover:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Gradient Utilities */
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-bg {
+  background: var(--brand-gradient);
+}
+
+/* Utility classes for buttons/inputs that were originally in HEAD */
 @utility glass-button {
   background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
@@ -52,15 +74,20 @@ body {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-@utility glass-input {
-  background-color: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.glass-input:focus {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.2);
-  outline: none;
+::-webkit-scrollbar-track {
+  background: var(--color-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
 }

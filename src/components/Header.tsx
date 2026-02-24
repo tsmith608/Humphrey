@@ -1,38 +1,35 @@
-import React from 'react';
-import { ShoppingCart, Menu } from 'lucide-react';
-import { Button } from './Button';
+import React from "react";
+import { Zap, ShoppingBag } from "lucide-react";
 
-export const Header = () => {
+export const Header: React.FC = () => {
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-black/40 backdrop-blur-xl">
-            <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-                {/* Mobile Menu & Logo */}
-                <div className="flex items-center gap-4">
-                    <Button variant="ghost" size="sm" className="md:hidden !px-2">
-                        <Menu className="w-5 h-5" />
-                    </Button>
-                    <a href="/" className="text-xl font-bold tracking-tighter text-white">
-                        HUMPHREY
-                    </a>
+        <header className="fixed top-0 z-50 w-full glass">
+            <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-8">
+                <div className="flex items-center gap-2">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl gradient-bg">
+                        <Zap className="h-6 w-6 text-white" />
+                    </div>
+                    <span className="text-xl font-bold tracking-tight text-white uppercase italic">
+                        Humphrey
+                    </span>
                 </div>
 
-                {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-8">
-                    <a href="/products" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Products</a>
-                    <a href="/collections" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">Collections</a>
-                    <a href="/about" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">About</a>
+                <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                    <a href="#" className="hover:text-white transition-colors">Marketplace</a>
+                    <a href="#" className="hover:text-white transition-colors">Templates</a>
+                    <a href="#" className="hover:text-white transition-colors">Resources</a>
                 </nav>
 
-                {/* Actions (Cart) */}
-                <div className="flex items-center gap-2">
-                    <Button variant="glass" size="sm" className="relative !px-3">
-                        <ShoppingCart className="w-4 h-4 mr-2" />
-                        <span className="text-sm">Cart</span>
-                        {/* Mock cart badge */}
-                        <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-white text-[10px] font-bold text-black border border-black hover:scale-110 transition-transform">
-                            2
+                <div className="flex items-center gap-4">
+                    <button className="relative p-2 text-zinc-400 hover:text-white transition-colors">
+                        <ShoppingBag className="h-6 w-6" />
+                        <span className="absolute top-1 right-1 flex h-4 w-4 items-center justify-center rounded-full gradient-bg text-[10px] font-bold text-white">
+                            0
                         </span>
-                    </Button>
+                    </button>
+                    <button className="hidden sm:block rounded-full bg-white px-5 py-2 text-xs font-bold text-black hover:bg-zinc-200 transition-colors">
+                        Connect Wallet
+                    </button>
                 </div>
             </div>
         </header>

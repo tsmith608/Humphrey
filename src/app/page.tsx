@@ -1,105 +1,108 @@
+"use client";
+
+import React from "react";
+import { Sparkles } from "lucide-react";
 import { Header } from "@/components/Header";
 import { ProductCard } from "@/components/ProductCard";
-import { Button } from "@/components/Button";
+// import { useCheckout } from "@/context/CheckoutContext"; // Will implement checkout flow in Phase 4
 
-const mockProducts = [
+const products = [
   {
-    id: 1,
-    title: "The Design System Handbook",
-    price: 19.99,
+    id: "asset-001",
+    title: "Humphrey Genesis | Premium Business Operating System",
+    price: "49.00",
+    category: "Productivity",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop",
+  },
+  {
+    id: "asset-002",
+    title: "Aura UI Kit | Glassmorphic Design System for Next.js",
+    price: "29.00",
     category: "Design",
-    imageUrl: "https://images.unsplash.com/photo-1620121692029-d088224ddc74?q=80&w=2832&auto=format&fit=crop"
+    image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=2670&auto=format&fit=crop",
   },
   {
-    id: 2,
-    title: "Advanced React Strategies",
-    price: 24.99,
-    category: "Engineering",
-    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+    id: "asset-003",
+    title: "Velocity Engine | High-Performance Marketing Framework",
+    price: "79.00",
+    category: "Marketing",
+    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2670&auto=format&fit=crop",
   },
-  {
-    id: 3,
-    title: "Next.js Performance Guide",
-    price: 29.99,
-    category: "Engineering",
-    imageUrl: "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2940&auto=format&fit=crop"
-  },
-  {
-    id: 4,
-    title: "Mastering Tailwind CSS",
-    price: 14.99,
-    category: "Design",
-    imageUrl: "https://images.unsplash.com/photo-1550684376-efcbd6e3f031?q=80&w=2940&auto=format&fit=crop"
-  },
-  {
-    id: 5,
-    title: "Figma to Code: The Complete Guide",
-    price: 39.99,
-    category: "Design",
-    imageUrl: "https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2940&auto=format&fit=crop"
-  },
-  {
-    id: 6,
-    title: "Building Glassmorphism UIs",
-    price: 19.99,
-    category: "Engineering",
-    imageUrl: "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=2787&auto=format&fit=crop"
-  }
 ];
 
 export default function Home() {
+  // const { openCheckout } = useCheckout();
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white/30 pb-20">
       <Header />
 
-      <main className="container mx-auto px-4 max-w-7xl pt-16 sm:pt-24">
+      <main className="min-h-screen pt-32 pb-20">
         {/* Hero Section */}
-        <section className="text-center space-y-8 mb-24 max-w-3xl mx-auto">
-          <h1 className="text-5xl sm:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-white to-white/50">
-            Elevate Your Edge
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Discover premium digital assets, guides, and tools crafted specifically
-            for modern creators and developers building the future of the web.
-          </p>
-          <div className="flex justify-center flex-wrap gap-4 pt-4 relative z-10">
-            <Button size="lg" className="font-semibold text-black bg-white hover:bg-gray-200">
-              Explore Catalog
-            </Button>
-            <Button variant="glass" size="lg" className="font-semibold">
-              Learn More
-            </Button>
+        <section className="relative px-6 lg:px-8 mb-24 overflow-hidden">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 border border-white/10 glass mb-8 animate-fade-in">
+              <Sparkles className="h-4 w-4 text-purple-500" />
+              <span className="text-xs font-bold text-zinc-400 uppercase tracking-widest">Digital Excellence</span>
+            </div>
+            <h1 className="text-5xl font-bold tracking-tight text-white sm:text-7xl mb-8 leading-[1.1]">
+              Elevate Your <span className="gradient-text">Workflow</span>
+            </h1>
+            <p className="text-xl text-zinc-500 leading-relaxed mb-10 max-w-xl mx-auto italic">
+              "The future belongs to those who build it. Humphrey provides the tools you need to succeed in the digital frontier."
+            </p>
+            <div className="flex items-center justify-center gap-6">
+              <button className="rounded-2xl gradient-bg px-8 py-4 text-sm font-bold text-white shadow-xl shadow-purple-500/20 hover:opacity-90 transition-all">
+                Explore Marketplace
+              </button>
+              <button className="rounded-2xl glass px-8 py-4 text-sm font-bold text-white hover:bg-white/5 transition-all">
+                View Roadmap
+              </button>
+            </div>
           </div>
         </section>
 
         {/* Product Grid */}
-        <section id="products">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Latest Releases</h2>
-            <Button variant="ghost" className="text-gray-400 hover:text-white">
-              View All
-            </Button>
-          </div>
+        <section className="px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <div className="flex justify-between items-end mb-12">
+              <div>
+                <h2 className="text-3xl font-bold text-white mb-2 italic">Featured Assets</h2>
+                <p className="text-zinc-500">Hand-crafted digital products for modern builders.</p>
+              </div>
+              <button className="text-sm font-bold text-purple-500 hover:text-purple-400 transition-colors uppercase tracking-widest">
+                View All Products &rarr;
+              </button>
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {mockProducts.map((product) => (
-              <ProductCard
-                key={product.id}
-                title={product.title}
-                price={product.price}
-                category={product.category}
-                imageUrl={product.imageUrl}
-              />
-            ))}
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  {...product}
+                  onBuy={(id, title, price) => console.log('Mock Buy:', { id, title, price })}
+                />
+              ))}
+            </div>
           </div>
         </section>
-      </main>
 
-      {/* Decorative Background Elements */}
-      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
-        <div className="absolute top-[10%] right-[10%] w-[500px] h-[500px] rounded-full bg-indigo-500/10 blur-[120px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-blue-500/10 blur-[150px]" />
-      </div>
+        {/* Background blobs */}
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 -z-10 w-full h-full pointer-events-none opacity-20">
+          <div className="absolute top-[10%] left-[20%] w-[500px] h-[500px] rounded-full bg-purple-600 blur-[120px]" />
+          <div className="absolute bottom-[10%] right-[20%] w-[500px] h-[500px] rounded-full bg-pink-600 blur-[120px]" />
+        </div>
+
+        <footer className="mt-24 px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl border-t border-white/5 pt-12 flex flex-col gap-6 sm:flex-row sm:justify-between items-center text-sm text-zinc-500 pb-12">
+            <div className="flex gap-6">
+              <a href="#" className="hover:text-white transition-colors">Documentation</a>
+              <a href="#" className="hover:text-white transition-colors">Templates</a>
+            </div>
+            <p>© 2026 Humphrey Inc.</p>
+          </div>
+        </footer>
+      </main>
     </div>
   );
 }
