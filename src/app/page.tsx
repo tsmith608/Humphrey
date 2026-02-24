@@ -138,28 +138,50 @@ const GALLERY_ITEMS = [
 ];
 
 // ─── Mini waveform SVG ─────────────────────────────────────────────────────
-const WaveformSVG = ({ width = 400, bars = 70 }: { width?: number; bars?: number }) => {
+const WaveformSVG = ({ bars = 70 }: { bars?: number }) => {
   const heights = [10, 18, 28, 38, 50, 42, 58, 48, 60, 52, 44, 56, 48, 36, 52, 60, 50, 40, 30, 20, 34, 48, 58, 52, 42, 60, 50, 38, 28, 18, 30, 42, 54, 60, 52, 46, 38, 30, 22, 16, 24, 36, 50, 58, 52, 44, 36, 26, 18, 12, 20, 32, 44, 56, 50, 42, 32, 24, 16, 10, 18, 28, 40, 52, 58, 50, 40, 30, 20, 12];
-  const colors = ["#7c6cf8", "#a78bfa", "rgba(124,108,248,0.5)"];
+  const viewW = bars * 7;
+  const viewH = 64;
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 3, width: "100%" }}>
+    <svg
+      viewBox={`0 0 ${viewW} ${viewH}`}
+      style={{ width: "100%", maxWidth: 680, display: "block", margin: "0 auto", overflow: "visible" }}
+    >
+      <defs>
+        <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#aa3a3a" />
+          <stop offset="50%" stopColor="#d97706" />
+          <stop offset="100%" stopColor="#a4b787" />
+        </linearGradient>
+        <style>{`
+          @keyframes waveAnim {
+            0%, 100% { transform: scaleY(0.3); }
+            50%       { transform: scaleY(1); }
+          }
+          .wv-bar {
+            transform-box: fill-box;
+            transform-origin: 50% 50%;
+            animation: waveAnim 1.2s ease-in-out infinite;
+          }
+        `}</style>
+      </defs>
       {heights.slice(0, bars).map((h, i) => (
-        <span
+        <rect
           key={i}
-          className="wave-bar"
-          style={{
-            height: h,
-            minWidth: 4,
-            borderRadius: 3,
-            background: colors[i % 3],
-            animationDelay: `${i * 0.04}s`,
-            animationDuration: `${0.8 + (i % 5) * 0.15}s`,
-          }}
+          className="wv-bar"
+          x={i * 7 + 2}
+          y={(viewH - h) / 2}
+          width={4}
+          height={h}
+          rx={2}
+          fill="url(#waveGrad)"
+          style={{ animationDelay: `${i * 0.04}s`, animationDuration: `${0.8 + (i % 5) * 0.15}s` }}
         />
       ))}
-    </div>
+    </svg>
   );
 };
+
 
 // ─── FAQ accordion ─────────────────────────────────────────────────────────
 function FaqItem({ q, a }: { q: string; a: string }) {

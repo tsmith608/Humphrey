@@ -30,10 +30,10 @@ export default function Header() {
           left: 0;
           z-index: 200;
           width: 260px;
-          background: rgba(18, 18, 26, 0.97);
+          background: var(--bg-secondary);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
-          border-right: 1px solid rgba(255,255,255,0.08);
+          border-right: 1px solid var(--border-medium);
           color: var(--text-primary);
           -webkit-clip-path: circle(30px at 35px 35px);
           clip-path: circle(30px at 35px 35px);
@@ -97,18 +97,18 @@ export default function Header() {
 
         .hb-links a:hover {
           color: var(--text-primary);
-          background: rgba(124, 108, 248, 0.08);
+          background: var(--accent-glow);
           border-left-color: var(--accent-primary);
           padding-left: 34px;
         }
 
         .hb-links a:active {
-          background: rgba(124, 108, 248, 0.15);
+          background: var(--accent-glow);
         }
 
         .hb-divider {
           height: 1px;
-          background: rgba(255,255,255,0.07);
+          background: var(--border-subtle);
           margin: 12px 20px;
         }
 
@@ -124,7 +124,7 @@ export default function Header() {
           text-transform: uppercase;
           text-decoration: none;
           color: white;
-          background: linear-gradient(135deg, #7c6cf8, #6355e8);
+          background: var(--accent-primary);
           transition: opacity 0.2s, transform 0.2s;
           font-family: var(--font-sans);
           white-space: nowrap;
@@ -165,7 +165,7 @@ export default function Header() {
                     left: 0,
                     right: 0,
                     zIndex: 50,
-                    background: scrolled ? "rgba(10,10,15,0.92)" : "rgba(10,10,15,0.75)",
+                    background: scrolled ? "var(--bg-secondary)" : "var(--bg-primary)",
                     backdropFilter: "blur(24px)",
                     WebkitBackdropFilter: "blur(24px)",
                     borderBottom: "1px solid var(--border-subtle)",

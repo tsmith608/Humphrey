@@ -109,7 +109,8 @@ body {
 /* ---- Button Styles ---- */
 .btn-primary {
   background: linear-gradient(135deg, #aa3a3a, #8e2e2e);
-  color: white;
+  color: #fff !important;
+  text-decoration: none !important;
   border: none;
   padding: 14px 32px;
   font-family: var(--font-sans);
@@ -122,6 +123,7 @@ body {
   transition: all 0.25s ease;
   position: relative;
   overflow: hidden;
+  display: inline-block;
 }
 
 .btn-primary::after {
