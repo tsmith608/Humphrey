@@ -1,17 +1,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-primary: #8b5cf6;
-  --color-brand-secondary: #ec4899;
-  --color-bg-dark: #050505;
-  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-brand-primary: #ef4444;
+  /* Red 500 */
+  --color-brand-secondary: #f43f5e;
+  /* Rose 500 */
+  --color-brand-accent: #be123c;
+  /* Rose 700 */
+  --color-bg-dark: #000000;
+  --color-glass-bg: rgba(255, 255, 255, 0.04);
   --color-glass-border: rgba(255, 255, 255, 0.1);
 }
 
 :root {
-  --background: #050505;
+  --background: #000000;
   --foreground: #ffffff;
-  --brand-gradient: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+  --brand-gradient: linear-gradient(135deg, #ef4444 0%, #f43f5e 50%, #be123c 100%);
+  --brand-gradient-soft: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(244, 63, 94, 0.1) 50%, rgba(190, 18, 60, 0.1) 100%);
 }
 
 @theme inline {
@@ -33,61 +38,84 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  letter-spacing: -0.01em;
 }
 
-/* Base Glassmorphism Utilities */
+/* Premium Glassmorphism */
 .glass {
   background: var(--color-glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+.glass-nav {
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-glass-border);
+  border-bottom: 1px solid rgba(255, 0, 0, 0.05);
+}
+
+.glass-hover {
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .glass-hover:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 0, 0, 0.02);
+  border-color: rgba(239, 68, 68, 0.3);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7), 0 0 20px rgba(239, 68, 68, 0.1);
 }
 
 /* Gradient Utilities */
 .gradient-text {
   background: var(--brand-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .gradient-bg {
   background: var(--brand-gradient);
 }
 
-/* Utility classes for buttons/inputs that were originally in HEAD */
+.glow-bg {
+  position: absolute;
+  filter: blur(160px);
+  z-index: -1;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
 @utility glass-button {
-  background-color: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.2s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.4);
+  transform: scale(1.05);
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg-dark);
+  background: #000;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
-  border-radius: 4px;
+  background: #27272a;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444;
+  background: #ef4444;
 }
